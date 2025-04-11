@@ -1,10 +1,36 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Header from "./Header";
+import { checkValidData } from "../utils/validate";
 
 const Login = () => {
+  const nameRef = useRef("");
+  const emailRef = useRef("");
+  const passwordRef = useRef("");
   const [isSignUpForm, setIsSignUpForm] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleChangeName = (e) => (nameRef.current = e.target.value);
+  const handleChangeEmail = (e) => (emailRef.current = e.target.value);
+  const handleChangePassword = (e) => (passwordRef.current = e.target.value);
 
   const toggleSignInForm = () => setIsSignUpForm(!isSignUpForm);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const enteredName = nameRef.current;
+    const enteredEmail = emailRef.current;
+    const enteredPassword = passwordRef.current;
+    const emailError = checkValidData(enteredEmail, enteredPassword);
+
+    setErrorMessage(emailError);
+
+    console.log({
+      enteredName,
+      enteredEmail,
+      enteredPassword,
+      emailError,
+    });
+  };
 
   return (
     <div className="relative before:bg-black before:opacity-50 before:absolute before:h-full before:w-full before:left-0 before:top-0">
@@ -15,30 +41,40 @@ const Login = () => {
           alt="Netflix Background image"
         />
       </div>
-      <form className="absolute text-white flex flex-col left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] w-80 bg-black/70 px-6 py-10 gap-5 rounded-lg">
+      <form
+        className="absolute text-white flex flex-col left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] w-80 bg-black/70 px-6 py-10 gap-5 rounded-lg"
+        onSubmit={handleSubmit}
+      >
         <h1 className="text-xl font-bold">Sign {isSignUpForm ? "Up" : "In"}</h1>
         {isSignUpForm && (
           <input
+            ref={nameRef}
             type="text"
             placeholder="Full Name"
             className="p-2 bg-gray-600 text-sm rounded"
+            onChange={handleChangeName}
             required
           />
         )}
         <input
+          ref={emailRef}
           type="text"
           placeholder="Email Address"
           className="p-2 bg-gray-600 text-sm rounded"
+          onChange={handleChangeEmail}
           required
         />
         <input
+          ref={passwordRef}
           type="password"
           placeholder="Password"
           className="p-2 bg-gray-600 text-sm rounded"
+          onChange={handleChangePassword}
           required
         />
+        <p className="text-red-400 text-sm font-bold">{errorMessage}</p>
         <button
-          type="button"
+          type="submit"
           className="p-2 bg-red-600 cursor-pointer rounded"
         >
           Sign {isSignUpForm ? "Up" : "In"}
