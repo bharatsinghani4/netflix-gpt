@@ -1,17 +1,24 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import Body from "./components/Body";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Browse from "./components/Browse";
 
 const AppLayout = () => {
-  return (
-    <div
-      id="app"
-      className="text-3xl font-bold text-green-800"
-    >
-      Netflix GPT
-    </div>
-  );
+  return <Body />;
 };
+
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <Body />,
+  },
+  {
+    path: "/browse",
+    element: <Browse />,
+  },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(<AppLayout />);
+root.render(<RouterProvider router={appRouter} />);
