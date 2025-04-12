@@ -69,10 +69,11 @@ const Login = () => {
   };
 
   return (
-    <div className="relative before:bg-black before:opacity-50 before:absolute before:h-full before:w-full before:left-0 before:top-0">
+    <div className="relative h-[100vh] before:bg-black before:opacity-50 before:absolute before:h-full before:w-full before:left-0 before:top-0">
       <Header />
-      <div>
+      <div className="h-[100vh]">
         <img
+          className="h-full max-w-[100%] object-cover"
           src="https://assets.nflxext.com/ffe/siteui/vlv3/fa4630b1-ca1e-4788-94a9-eccef9f7af86/web/IN-en-20250407-TRIFECTA-perspective_43f6a235-9f3d-47ef-87e0-46185ab6a7e0_large.jpg"
           alt="Netflix Background image"
         />
