@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import { useNavigate } from "react-router";
 import Header from "./Header";
 import { checkValidData } from "../utils/validate";
 import { auth } from "../utils/firebase";
@@ -10,13 +9,16 @@ import {
 } from "@firebase/auth";
 import { useDispatch } from "react-redux";
 import { addUser } from "../store/userSlice";
+import {
+  NETFLIX_BACKGROUND_IMAGE_URL,
+  USER_PHOTO_URL,
+} from "../utils/constants";
 
 const Login = () => {
   const nameRef = useRef("");
   const emailRef = useRef("");
   const passwordRef = useRef("");
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [isSignUpForm, setIsSignUpForm] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -34,12 +36,6 @@ const Login = () => {
     const errorMessage = checkValidData(enteredEmail, enteredPassword);
 
     setErrorMessage(errorMessage);
-    console.log({
-      enteredName,
-      enteredEmail,
-      enteredPassword,
-      errorMessage,
-    });
 
     if (errorMessage) return;
 
@@ -48,17 +44,16 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
-          console.log({ user });
+
           updateProfile(user, {
             displayName: enteredName,
-            photoURL: "https://avatars.githubusercontent.com/u/20641276?v=4",
+            photoURL: USER_PHOTO_URL,
           })
             .then(() => {
               // Profile updated!
               // ...
               const { uid, email, displayName, photoURL } = auth.currentUser;
               dispatch(addUser({ uid, email, displayName, photoURL }));
-              navigate("/browse");
             })
             .catch((error) => {
               // An error occurred
@@ -70,22 +65,17 @@ const Login = () => {
           const errorCode = error.code;
           const errorMsg = error.message;
 
-          console.log(errorCode + " - " + errorMsg);
           setErrorMessage(errorCode + " - " + errorMsg);
         });
     } else {
       signInWithEmailAndPassword(auth, enteredEmail, enteredPassword)
         .then((userCredential) => {
           // Signed in
-          const user = userCredential.user;
-          console.log({ user });
-          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMsg = error.message;
 
-          console.log(errorCode + " - " + errorMsg);
           setErrorMessage(errorCode + " - " + errorMsg);
         });
     }
@@ -97,7 +87,7 @@ const Login = () => {
       <div className="absolute h-[100vh] w-full left-0 top-0">
         <img
           className="h-full max-w-full w-full object-cover scale"
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/fa4630b1-ca1e-4788-94a9-eccef9f7af86/web/IN-en-20250407-TRIFECTA-perspective_43f6a235-9f3d-47ef-87e0-46185ab6a7e0_large.jpg"
+          src={NETFLIX_BACKGROUND_IMAGE_URL}
           alt="Netflix Background image"
         />
       </div>
