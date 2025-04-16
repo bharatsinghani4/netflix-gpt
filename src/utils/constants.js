@@ -26,6 +26,21 @@ export const API_OPTIONS = {
   },
 };
 
+export const SUPPORTED_LANGUAGES = [
+  {
+    identifier: "english",
+    name: "English",
+  },
+  {
+    identifier: "hindi",
+    name: "Hindi",
+  },
+  {
+    identifier: "spanish",
+    name: "Spanish",
+  },
+];
+
 export const getRandomIndex = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);

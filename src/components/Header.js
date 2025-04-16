@@ -4,12 +4,20 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../store/userSlice";
-import { DEFAULT_USER_PHOTO_URL, NETFLIX_LOGO_URL } from "../utils/constants";
+import {
+  DEFAULT_USER_PHOTO_URL,
+  NETFLIX_LOGO_URL,
+  SUPPORTED_LANGUAGES,
+} from "../utils/constants";
+import { toggleGPTSearchView } from "../store/gptSlice";
+import { changeLanguage } from "../store/configSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
+  const showGPTSearch = useSelector((store) => store?.gpt?.showGPTSearch);
+  const selectedLang = useSelector((store) => store?.config?.lang);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -25,6 +33,14 @@ const Header = () => {
 
     return () => unsubscribe();
   }, []);
+
+  const handleGPTSearchClick = () => {
+    dispatch(toggleGPTSearchView());
+  };
+
+  const handleChangeLanguage = (e) => {
+    dispatch(changeLanguage(e.target.value));
+  };
 
   const handleSignOut = () => {
     signOut(auth)
@@ -59,6 +75,29 @@ const Header = () => {
       </div>
       {user && (
         <div className="flex items-center gap-2.5">
+          {showGPTSearch && (
+            <select
+              className="font-medium text-white bg-gray-600 px-4 py-1 rounded-md cursor-pointer"
+              defaultValue={selectedLang}
+              onChange={handleChangeLanguage}
+            >
+              {SUPPORTED_LANGUAGES.map((lang) => (
+                <option
+                  key={lang.identifier}
+                  value={lang.identifier}
+                >
+                  {lang.name}
+                </option>
+              ))}
+            </select>
+          )}
+          <button
+            type="button"
+            className="font-bold text-white bg-gray-400 px-4 py-2 rounded-md leading-none cursor-pointer"
+            onClick={handleGPTSearchClick}
+          >
+            {showGPTSearch ? "Home" : "🔍 GPT Search"}
+          </button>
           <div className="rounded-md overflow-hidden h-8 w-8">
             <img
               className="h-full max-h-full"
