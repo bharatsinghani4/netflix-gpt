@@ -1,1 +1,16 @@
 @import "tailwindcss";
+
+@theme {
+  --shadow-b-100: 0 0px 100px 100px rgba(0, 0, 0, 1);
+  --flex-1-1-auto: 1 1 auto;
+}
+
+::-webkit-scrollbar-track {
+  display: none !important;
+}
+
+html,
+body {
+  background-color: #141414;
+  overflow-x: hidden;
+}

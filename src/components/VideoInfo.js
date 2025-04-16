@@ -2,7 +2,7 @@ import { TMDB_IMAGE_SECURE_BASE_URL } from "../utils/constants";
 
 const VideoInfo = ({ posterImage, title, overview }) => {
   return (
-    <div className="absolute left-0 px-12 pt-[20%] top-0 text-white w-screen aspect-video">
+    <div className="absolute left-0 px-12 pt-[15%] top-0 text-white w-screen aspect-video h-full">
       <div className="h-24 w-24 rounded-lg overflow-hidden">
         <img
           src={`${TMDB_IMAGE_SECURE_BASE_URL}/original/${posterImage}`}
@@ -10,8 +10,10 @@ const VideoInfo = ({ posterImage, title, overview }) => {
         />
       </div>
       <div className="w-fit">
-        <h1 className="text-6xl font-bold my-4">{title}</h1>
-        <p className="text-md w-1/2 mb-4">{overview}</p>
+        <h1 className="text-5xl font-bold my-4">{title}</h1>
+        <p className="text-md mb-4 2xl:w-1/2 lg:w-1/2 md:w-3/4 sm:w-full">
+          {overview}
+        </p>
       </div>
       <div className="flex items-center gap-4">
         <button
