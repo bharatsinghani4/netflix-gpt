@@ -7,7 +7,7 @@ const GPTMovieSuggestions = () => {
   if (!gptMovieNames?.length) return null;
 
   return (
-    <div className="bg-black/70 mt-12 pt-4 pb-8 rounded-lg">
+    <div className="bg-black/70 mt-6 md:mt-12 py-4 md:pb-8 rounded-lg">
       {gptMovieNames?.map((movieName, index) => {
         if (gptMovieResults[index].length) {
           return (

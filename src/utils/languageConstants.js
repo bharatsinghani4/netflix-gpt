@@ -1,7 +1,7 @@
 const lang = {
   english: {
     search: "Search",
-    searchPlaceholder: "What would you like to watch today?",
+    searchPlaceholder: "What do you like to watch today?",
   },
   hindi: {
     search: "खोज",

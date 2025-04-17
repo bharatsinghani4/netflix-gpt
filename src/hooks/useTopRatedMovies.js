@@ -18,6 +18,6 @@ export const useTopRatedMovies = () => {
   };
 
   useEffect(() => {
-    !topRatedMovies && fetchTopRatedMovies();
+    topRatedMovies.length === 0 && fetchTopRatedMovies();
   }, []);
 };

@@ -18,6 +18,6 @@ export const useUpcomingMovies = () => {
   };
 
   useEffect(() => {
-    !upcomingMovies && fetchUpcomingMovies();
+    upcomingMovies.length === 0 && fetchUpcomingMovies();
   }, []);
 };

@@ -20,6 +20,6 @@ export const useNowPlayingMovies = () => {
   };
 
   useEffect(() => {
-    !nowPlayingMovies && fetchNowPlayingMovies();
+    nowPlayingMovies.length === 0 && fetchNowPlayingMovies();
   }, []);
 };

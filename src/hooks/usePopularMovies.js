@@ -18,6 +18,6 @@ export const usePopularMovies = () => {
   };
 
   useEffect(() => {
-    !popularMovies && fetchPopularMovies();
+    popularMovies.length === 0 && fetchPopularMovies();
   }, []);
 };

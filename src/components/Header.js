@@ -54,10 +54,10 @@ const Header = () => {
 
   return (
     <div
-      className={`absolute w-full px-12 py-6 z-30 left-[50%] -translate-x-[50%] flex items-center justify-between ${
+      className={`md:fixed w-full p-4 md:px-12 md:py-6 z-30 md:left-[50%] md:-translate-x-[50%] flex flex-col md:flex-row items-center justify-between ${
         !user
           ? "bg-none max-w-2/3"
-          : "bg-linear-180 bg-gradient-to-b from-[rgba(0,0,0,.7)] from-10% to-transparent"
+          : "bg-black md:bg-linear-180 bg-gradient-to-b from-[rgba(0,0,0,.7)] from-10% to-transparent"
       }`}
     >
       <div
@@ -74,10 +74,10 @@ const Header = () => {
         />
       </div>
       {user && (
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-2.5 mt-4 md:mt-0">
           {showGPTSearch && (
             <select
-              className="font-medium text-white bg-gray-600 px-4 py-1 rounded-md cursor-pointer"
+              className="font-medium text-white bg-gray-600 px-2 md:px-4 py-1 rounded-md cursor-pointer"
               defaultValue={selectedLang}
               onChange={handleChangeLanguage}
             >
@@ -93,10 +93,10 @@ const Header = () => {
           )}
           <button
             type="button"
-            className="font-bold text-white bg-gray-400 px-4 py-2 rounded-md leading-none cursor-pointer"
+            className="font-bold text-white bg-gray-400 px-2 md:px-4 py-2 rounded-md leading-none cursor-pointer"
             onClick={handleGPTSearchClick}
           >
-            {showGPTSearch ? "Home" : "🔍 GPT Search"}
+            {showGPTSearch ? "🏡 Home" : "🔍 GPT Search"}
           </button>
           <div className="rounded-md overflow-hidden h-8 w-8">
             <img

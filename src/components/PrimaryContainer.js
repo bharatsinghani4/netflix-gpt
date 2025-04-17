@@ -13,7 +13,7 @@ const PrimaryContainer = () => {
   const { id, poster_path, original_title, overview } = mainMovie;
 
   return (
-    <div className="relative h-[100vh] shadow-b-100">
+    <div className="md:relative md:top-20 h-full md:h-[100vh] shadow-b-100 bg-black">
       <VideoBackground movieId={id} />
       <VideoInfo
         posterImage={poster_path}

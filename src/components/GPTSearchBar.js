@@ -65,11 +65,11 @@ const GPTSearchBar = () => {
           ref={inputRef}
           type="text"
           placeholder={lang[selectedLang].searchPlaceholder}
-          className="flex-[1_0_auto] px-6 py-2 bg-black/70"
+          className="flex-[1_0_auto] px-3 md:px-6 py-2 bg-black/70"
         />
         <button
           type="submit"
-          className="cursor-pointer bg-red-500 text-white px-10 py-2 font-medium"
+          className="cursor-pointer bg-red-500 text-white px-4 md:px-10 py-2 font-medium"
         >
           {lang[selectedLang].search}
         </button>

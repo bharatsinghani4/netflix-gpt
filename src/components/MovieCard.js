@@ -6,7 +6,7 @@ const MovieCard = ({ movie }) => {
   if (!poster_path) return null;
 
   return (
-    <div className="w-48 max-h-72 cursor-pointer rounded-md overflow-hidden">
+    <div className="w-36 md:w-48 max-h-52 md:max-h-72 cursor-pointer rounded-md overflow-hidden">
       <img
         className="h-full object-cover"
         src={`${TMDB_IMAGE_SECURE_BASE_URL}/original/${poster_path}`}
