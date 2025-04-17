@@ -12,21 +12,20 @@ export const USER_PHOTO_URL =
 
 export const TMDB_IMAGE_SECURE_BASE_URL = "https://image.tmdb.org/t/p/";
 
-export const API_KEY = "3f2840cc56a9d08ea4b2068a8aaec197";
+export const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
 
 export const API_READ_ACCESS_TOKEN =
-  "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzZjI4NDBjYzU2YTlkMDhlYTRiMjA2OGE4YWFlYzE5NyIsIm5iZiI6MTc0NDU4NzEzNS4xODksInN1YiI6IjY3ZmM0OTdmYWFjZjdjZmIyNjk5NjYwMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DQLrcYm6TNzuVo2vxeJkaO_cwbXmHmEozxSIUuOa6-0";
+  process.env.REACT_APP_TMDB_API_READ_ACCESS_TOKEN;
 
 export const API_OPTIONS = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzZjI4NDBjYzU2YTlkMDhlYTRiMjA2OGE4YWFlYzE5NyIsIm5iZiI6MTc0NDU4NzEzNS4xODksInN1YiI6IjY3ZmM0OTdmYWFjZjdjZmIyNjk5NjYwMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DQLrcYm6TNzuVo2vxeJkaO_cwbXmHmEozxSIUuOa6-0",
+    Authorization: "Bearer " + API_READ_ACCESS_TOKEN,
   },
 };
 
-export const GEMINI_API_KEY = "AIzaSyBlrt_VV5Ck44Utm-GALBfPv68e1RXKzmI";
+export const GEMINI_API_KEY = process.env.REACT_APP_GEMINI_API_KEY;
 
 export const SUPPORTED_LANGUAGES = [
   {

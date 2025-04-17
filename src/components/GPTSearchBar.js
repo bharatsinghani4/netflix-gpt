@@ -47,13 +47,12 @@ const GPTSearchBar = () => {
 
     const promiseArray = gptMovies.map((gptMovie) => searchMovieTMDB(gptMovie));
     const tmdbResults = await Promise.all(promiseArray);
-    console.log({ tmdbResults });
 
     dispatch(
       addGPTMovieResults({ movieNames: gptMovies, movieResults: tmdbResults })
     );
 
-    // inputRef.current.value = "";
+    inputRef.current.value = "";
   };
 
   return (
