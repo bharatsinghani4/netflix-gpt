@@ -1,17 +1,24 @@
-import MovieCard from "./MovieCard";
+import { useSelector } from "react-redux";
+import MovieList from "./MovieList.js";
 
 const GPTMovieSuggestions = () => {
+  const { gptMovieNames, gptMovieResults } = useSelector((store) => store?.gpt);
+
+  if (!gptMovieNames?.length) return null;
+
   return (
-    <div>
-      <div className="flex items-center gap-5">
-        {/* {!!movies.length &&
-          movies.map((movie) => (
-            <MovieCard
-              key={movie.id}
-              movie={movie}
+    <div className="bg-black/70 mt-12 pt-4 pb-8 rounded-lg">
+      {gptMovieNames?.map((movieName, index) => {
+        if (gptMovieResults[index].length) {
+          return (
+            <MovieList
+              key={movieName}
+              title={movieName}
+              movies={gptMovieResults[index]}
             />
-          ))} */}
-      </div>
+          );
+        }
+      })}
     </div>
   );
 };

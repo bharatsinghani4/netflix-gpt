@@ -26,6 +26,8 @@ export const API_OPTIONS = {
   },
 };
 
+export const GEMINI_API_KEY = "AIzaSyBlrt_VV5Ck44Utm-GALBfPv68e1RXKzmI";
+
 export const SUPPORTED_LANGUAGES = [
   {
     identifier: "english",

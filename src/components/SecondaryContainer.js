@@ -6,22 +6,30 @@ const SecondaryContainer = () => {
 
   return (
     <div className="relative md:-mt-[325px] lg:-mt-[250px] z-20 pb-[50px] bg-black">
-      <MovieList
-        title={"Now Playing"}
-        movies={movies?.nowPlayingMovies}
-      />
-      <MovieList
-        title={"Popular"}
-        movies={movies?.popularMovies}
-      />
-      <MovieList
-        title={"Top rated"}
-        movies={movies?.topRatedMovies}
-      />
-      <MovieList
-        title={"Upcoming"}
-        movies={movies?.upcomingMovies}
-      />
+      {movies?.nowPlayingMovies.length && (
+        <MovieList
+          title={"Now Playing"}
+          movies={movies?.nowPlayingMovies}
+        />
+      )}
+      {movies?.popularMovies.length && (
+        <MovieList
+          title={"Popular"}
+          movies={movies?.popularMovies}
+        />
+      )}
+      {movies?.topRatedMovies.length && (
+        <MovieList
+          title={"Top rated"}
+          movies={movies?.topRatedMovies}
+        />
+      )}
+      {movies?.upcomingMovies.length && (
+        <MovieList
+          title={"Upcoming"}
+          movies={movies?.upcomingMovies}
+        />
+      )}
     </div>
   );
 };
