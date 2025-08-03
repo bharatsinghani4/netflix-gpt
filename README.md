@@ -110,7 +110,7 @@ A Netflix clone with GPT-powered search and personalized suggestions. Built usin
 
 - **The Movie Database (TMDB) API** for movie lists and details
 - If you are accessing TMDB from India, you will need a VPN since TMDB is not available in India.
-- If you are accessing TMDB from any other countery, make sure to check the availability of TMDB in your country.
+- If you are accessing TMDB from any other country, make sure to check the availability of TMDB in your country.
 - **Google Gemini API** via `@google/genai` for GPT-powered search  
 
 > **Note**: Ensure you add your Firebase config and Gemini API credentials in `src/utils/firebase.js` and environment variables as needed.
